@@ -1,0 +1,212 @@
+var vod_detail_proto = new Object ();
+function voddetail_contructor (config)
+{
+  this.apply ("Page", "_constructor", config);
+  Content.parseParameters ();
+}
+vod_detail_proto._constructor = voddetail_contructor;
+
+function voddetail_initSkin ()
+{
+  this.apply ("Page", "initSkin");
+  this.bind ('start', this, 'pageStarted');
+}
+vod_detail_proto.initSkin = voddetail_initSkin;
+
+function voddetail_pageStarted (event)
+{
+  this.setCastMode ();
+  this.setContent ();
+  
+  this.setUsedKeyList ("basic data-button numeric-tuning");
+  KEYBOARD.bind (KEYBOARD.ONE, this);
+  KEYBOARD.bind (KEYBOARD.TWO, this);
+  KEYBOARD.bind (KEYBOARD.THREE, this);
+  KEYBOARD.bind (KEYBOARD.RED, this);
+  KEYBOARD.bind (KEYBOARD.BLUE, this);
+  this.loadingView.hide ();
+}
+vod_detail_proto.pageStarted = voddetail_pageStarted;
+
+
+function voddetail_notify (event)
+{
+  if (event.type == KEYBOARD.BLUE || event.type == KEYBOARD.THREE)
+  {
+    this.seeButton.setFocus ();
+    this.loadingView.show ();
+    this.goToIndexPage ();
+  }
+  
+  if (event.type == KEYBOARD.TWO)
+  {
+    this.buyButton.setFocus ();
+    this.loadingView.show ();
+    this.goToPage ("VodBuy");
+  }
+  
+  else if (event.type == KEYBOARD.RED)
+  {
+    this.loadingView.show ();
+    this.goToPage ("CmSelect");
+  }
+}
+vod_detail_proto.notify = voddetail_notify;
+
+function voddetail_setContent ()
+{
+  var contentData = Content.getCurrentData ();
+  if (!contentData) { return;}
+  
+  this.drpcInformation.setSrc (contentData.drpcInfo);
+  this.contentInformation.setSrc (contentData.contentInfo);
+  this.castView.setSrc (contentData.castInfo);
+}
+vod_detail_proto.setContent = voddetail_setContent;
+
+
+function voddetail_setCastMode ()
+{
+  this.castTab.setSrc ("resources/images/DetailsOfVOD_Tab_01_CAST_selected.jpg");
+  this.permissionTab.setSrc ("resources/images/DetailsOfVOD_Tab_01_Permission.jpg");  
+  this.tabButton.setSrc ("resources/images/DetailsOfVOD_Button_01_toPermissionInfo.jpg");  
+}
+vod_detail_proto.setCastMode = voddetail_setCastMode;
+
+function voddetail_setPermissionMode ()
+{
+  this.castTab.setSrc ("resources/images/DetailsOfVOD_Tab_01_CAST.jpg");
+  this.permissionTab.setSrc ("resources/images/DetailsOfVOD_Tab_01_Permission_selected.jpg");  
+  this.tabButton.setSrc ("resources/images/DetailsOfVOD_Button_01_toCAST.jpg");  
+}
+vod_detail_proto.setPermissionMode = voddetail_setPermissionMode;
+
+
+var VodDetail = Class.create ('VodDetail', vod_detail_proto);
+Class.extend ('VodDetail', "Page");
+
+function vod_detail_initComponent ()
+{
+  this.apply ("Page", "initComponent");
+  
+  config = new Object ();
+  config.id = "hak_id_1316598463720810270";
+  config.node_ref = "hak_id_1316598463720810270";
+  config.root_ref = this.id;
+  this.abImageView1 = Class["new"]("ABImageView", config);
+  this.add (this.abImageView1, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316598511369261537";
+  config.node_ref = "hak_id_1316598511369261537";
+  config.root_ref = this.id;
+  this.abImageView2 = Class["new"]("ABImageView", config);
+  this.add (this.abImageView2, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316598515089409572";
+  config.node_ref = "hak_id_1316598515089409572";
+  config.root_ref = this.id;
+  this.abImageView3 = Class["new"]("ABImageView", config);
+  this.add (this.abImageView3, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316598582890715848";
+  config.node_ref = "hak_id_1316598582890715848";
+  config.root_ref = this.id;
+  this.buyButton = Class["new"]("ABNavImageView", config);
+  this.add (this.buyButton, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316598610544602528";
+  config.node_ref = "hak_id_1316598610544602528";
+  config.root_ref = this.id;
+  this.seeButton = Class["new"]("ABNavImageView", config);
+  this.add (this.seeButton, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316610123343221774";
+  config.node_ref = "hak_id_1316610123343221774";
+  config.root_ref = this.id;
+  this.drpcInformation = Class["new"]("ABImageView", config);
+  this.add (this.drpcInformation, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316610148228466890";
+  config.node_ref = "hak_id_1316610148228466890";
+  config.root_ref = this.id;
+  this.contentInformation = Class["new"]("ABImageView", config);
+  this.add (this.contentInformation, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316610188237691818";
+  config.node_ref = "hak_id_1316610188237691818";
+  config.root_ref = this.id;
+  this.castView = Class["new"]("ABImageView", config);
+  this.add (this.castView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316610246497975036";
+  config.node_ref = "hak_id_1316610246497975036";
+  config.root_ref = this.id;
+  this.tabButton = Class["new"]("ABImageView", config);
+  this.add (this.tabButton, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316610368193824333";
+  config.node_ref = "hak_id_1316610368193824333";
+  config.root_ref = this.id;
+  this.castTab = Class["new"]("ABImageView", config);
+  this.add (this.castTab, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316610378316432564";
+  config.node_ref = "hak_id_1316610378316432564";
+  config.root_ref = this.id;
+  this.permissionTab = Class["new"]("ABImageView", config);
+  this.add (this.permissionTab, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_131669127547812315";
+  config.node_ref = "hak_id_131669127547812315";
+  config.root_ref = this.id;
+  this.loadingView = Class["new"]("ABImageView", config);
+  this.add (this.loadingView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316698495993935806";
+  config.node_ref = "hak_id_1316698495993935806";
+  config.root_ref = this.id;
+  this.pointsView = Class["new"]("ABTextLabel", config);
+  this.add (this.pointsView, 'children');
+  this.abImageView1.init ();
+  this.abImageView2.init ();
+  this.abImageView3.init ();
+  this.buyButton.init ();
+  this.seeButton.init ();
+  this.drpcInformation.init ();
+  this.contentInformation.init ();
+  this.castView.init ();
+  this.tabButton.init ();
+  this.castTab.init ();
+  this.permissionTab.init ();
+  this.loadingView.init ();
+  this.pointsView.init ();
+  default_values = new Object ();
+  default_values.text = "100";
+  this.pointsView.configure (default_values);
+};
+vod_detail_proto.initComponent = vod_detail_initComponent;
+
+
+function initVodDetail ()
+{
+  var config = new Object ();
+  config.id = "hak_id_13165980176247022";
+  vod_detail = Class["new"]("VodDetail", config);
+  vod_detail.init ();
+  vod_detail.setNavigationGraph (_vod_detail_nav_graph);
+ Page.sendStart ();
+}
+
+var _vod_detail_nav_graph = new Object ();

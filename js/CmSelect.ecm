@@ -1,0 +1,122 @@
+var cm_select_proto = new Object ();
+
+function _contructor (config)
+{
+  this.apply ("Page", "_constructor", config);
+}
+cm_select_proto._constructor = _contructor;
+
+function vod_buy_initSkin ()
+{
+  this.apply ('Page', 'initSkin');
+  this.bind ('start', this, 'pageStarted');
+}
+cm_select_proto.initSkin = vod_buy_initSkin;
+
+function cm_select_pageStarted (event)
+{
+  this.setUsedKeyList ("basic data-button numeric-tuning");
+  
+  KEYBOARD.bind (KEYBOARD.RED, this);
+  KEYBOARD.bind (KEYBOARD.BLUE, this);
+  this.loadingView.hide ();
+}
+cm_select_proto.pageStarted = cm_select_pageStarted;
+
+function cmselect_notify (event)
+{
+  if (event.type == KEYBOARD.RED)
+  {
+    this.loadingView.show ();
+    this.goToPage ("CmSelect");
+  }
+  
+  else if (event.type == KEYBOARD.BLUE)
+  {
+    this.loadingView.show ();
+    this.goToIndexPage ();
+  }
+}
+cm_select_proto.notify = cmselect_notify;
+
+
+var CmSelect = Class.create ('CmSelect', cm_select_proto);
+Class.extend ('CmSelect', 'Page');
+
+function cm_select_initComponent ()
+{
+  this.apply ("Page", "initComponent");
+  
+  config = new Object ();
+  config.id = "hak_id_1316598104087803137";
+  config.node_ref = "hak_id_1316598104087803137";
+  config.root_ref = this.id;
+  this.background = Class["new"]("ABImageView", config);
+  this.add (this.background, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_131659817868129472";
+  config.node_ref = "hak_id_131659817868129472";
+  config.root_ref = this.id;
+  this.imageOne = Class["new"]("ABNavImageView", config);
+  this.add (this.imageOne, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316598206123490976";
+  config.node_ref = "hak_id_1316598206123490976";
+  config.root_ref = this.id;
+  this.imageTwo = Class["new"]("ABNavImageView", config);
+  this.add (this.imageTwo, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316598262148557920";
+  config.node_ref = "hak_id_1316598262148557920";
+  config.root_ref = this.id;
+  this.loadingView = Class["new"]("ABImageView", config);
+  this.add (this.loadingView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316598332383363334";
+  config.node_ref = "hak_id_1316598332383363334";
+  config.root_ref = this.id;
+  this.redButton = Class["new"]("ABImageView", config);
+  this.add (this.redButton, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316598348901729471";
+  config.node_ref = "hak_id_1316598348901729471";
+  config.root_ref = this.id;
+  this.blueButton = Class["new"]("ABImageView", config);
+  this.add (this.blueButton, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316698415058539178";
+  config.node_ref = "hak_id_1316698415058539178";
+  config.root_ref = this.id;
+  this.abTextLabel1 = Class["new"]("ABTextLabel", config);
+  this.add (this.abTextLabel1, 'children');
+  this.background.init ();
+  this.imageOne.init ();
+  this.imageTwo.init ();
+  this.loadingView.init ();
+  this.redButton.init ();
+  this.blueButton.init ();
+  this.abTextLabel1.init ();
+  default_values = new Object ();
+  default_values.text = "100";
+  this.abTextLabel1.configure (default_values);
+};
+cm_select_proto.initComponent = cm_select_initComponent;
+
+
+function initCmSelect ()
+{
+  var config = new Object ();
+  config.id = "hak_id_1316598065336964510";
+  cm_select = Class["new"]("CmSelect", config);
+  cm_select.init ();
+  cm_select.setNavigationGraph (_cm_select_nav_graph);
+ Page.sendStart ();
+}
+
+var _cm_select_nav_graph = new Object ();

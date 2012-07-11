@@ -1,0 +1,173 @@
+var vod_buy_proto = new Object ();
+var page = null;
+
+function _contructor (config)
+{
+  this.apply ("Page", "_constructor", config);
+  Content.parseParameters ();
+  page = this;
+}
+vod_buy_proto._constructor = _contructor;
+
+function vod_buy_initSkin ()
+{
+  this.apply ('Page', 'initSkin');
+  this.bind ('start', this, 'pageStarted');
+}
+vod_buy_proto.initSkin = vod_buy_initSkin;
+
+function vod_buy_pageStarted (event)
+{
+  this.setUsedKeyList ("basic data-button numeric-tuning");
+  KEYBOARD.bind (KEYBOARD.ONE, this);
+  KEYBOARD.bind (KEYBOARD.TWO, this);
+  KEYBOARD.bind (KEYBOARD.THREE, this);
+  KEYBOARD.bind (KEYBOARD.RED, this);
+  KEYBOARD.bind (KEYBOARD.BLUE, this);
+  this.loadingView.hide ();
+}
+vod_buy_proto.pageStarted = vod_buy_pageStarted;
+
+function delay ()
+{
+  page.setFocus ();
+}
+
+function vodbuy_notify (event)
+{
+  if (event.type == KEYBOARD.BLUE)
+  {
+    this.loadingView.show ();
+    this.goToIndexPage ();
+  }
+  
+  else if (event.type == KEYBOARD.RED)
+  {
+    this.loadingView.show ();
+    this.goToPage ("CmSelect");
+  }
+  
+  else if (event.type == KEYBOARD.ONE)
+  {
+    this.buyCashButton.setFocus ();
+    var self = this;
+    setTimeout (delay, 50);
+  }
+  
+  else if (event.type == KEYBOARD.TWO)
+  {
+    this.buyPointButton.setFocs ();
+    var self = this;
+    setTimeout (delay, 50);
+  }
+}
+vod_buy_proto.notify = vodbuy_notify;
+
+var VodBuy = Class.create ('VodBuy', vod_buy_proto);
+Class.extend ('VodBuy', 'Page');
+
+function vod_buy_initComponent ()
+{
+  this.apply ("Page", "initComponent");
+  
+  config = new Object ();
+  config.id = "hak_id_1316609662398665803";
+  config.node_ref = "hak_id_1316609662398665803";
+  config.root_ref = this.id;
+  this.background = Class["new"]("ABImageView", config);
+  this.add (this.background, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316609694704906036";
+  config.node_ref = "hak_id_1316609694704906036";
+  config.root_ref = this.id;
+  this.contentView = Class["new"]("ABImageView", config);
+  this.add (this.contentView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316609710734145824";
+  config.node_ref = "hak_id_1316609710734145824";
+  config.root_ref = this.id;
+  this.abImageView6 = Class["new"]("ABImageView", config);
+  this.add (this.abImageView6, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316609714784317729";
+  config.node_ref = "hak_id_1316609714784317729";
+  config.root_ref = this.id;
+  this.abImageView7 = Class["new"]("ABImageView", config);
+  this.add (this.abImageView7, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316609749209496094";
+  config.node_ref = "hak_id_1316609749209496094";
+  config.root_ref = this.id;
+  this.contentTitle = Class["new"]("ABImageView", config);
+  this.add (this.contentTitle, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316609782758311092";
+  config.node_ref = "hak_id_1316609782758311092";
+  config.root_ref = this.id;
+  this.contentPrice = Class["new"]("ABImageView", config);
+  this.add (this.contentPrice, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316609798925216500";
+  config.node_ref = "hak_id_1316609798925216500";
+  config.root_ref = this.id;
+  this.buyCashButton = Class["new"]("ABNavImageView", config);
+  this.add (this.buyCashButton, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316609820098948709";
+  config.node_ref = "hak_id_1316609820098948709";
+  config.root_ref = this.id;
+  this.buyPointButton = Class["new"]("ABNavImageView", config);
+  this.add (this.buyPointButton, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316694538885544181";
+  config.node_ref = "hak_id_1316694538885544181";
+  config.root_ref = this.id;
+  this.loadingView = Class["new"]("ABImageView", config);
+  this.add (this.loadingView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_131669845523286362";
+  config.node_ref = "hak_id_131669845523286362";
+  config.root_ref = this.id;
+  this.abTextLabel2 = Class["new"]("ABTextLabel", config);
+  this.add (this.abTextLabel2, 'children');
+  this.background.init ();
+  this.contentView.init ();
+  this.abImageView6.init ();
+  this.abImageView7.init ();
+  this.contentTitle.init ();
+  this.contentPrice.init ();
+  this.buyCashButton.init ();
+  this.buyPointButton.init ();
+  this.loadingView.init ();
+  this.abTextLabel2.init ();
+  default_values = new Object ();
+  default_values.text = "100";
+  this.abTextLabel2.configure (default_values);
+};
+vod_buy_proto.initComponent = vod_buy_initComponent;
+
+
+function initVodBuy ()
+{
+  var config = new Object ();
+  config.id = "hak_id_1316598038817633325";
+  vod_buy = Class["new"]("VodBuy", config);
+  vod_buy.init ();
+  vod_buy.setNavigationGraph (_vod_buy_nav_graph);
+ Page.sendStart ();
+}
+
+var _vod_buy_nav_graph = new Object ();
+_vod_buy_nav_graph.hak_id_1316609798925216500 = new Object ();
+_vod_buy_nav_graph.hak_id_1316609798925216500[2] = 'hak_id_1316609820098948709';
+_vod_buy_nav_graph.hak_id_1316609820098948709 = new Object ();
+_vod_buy_nav_graph.hak_id_1316609820098948709[1] = 'hak_id_1316609798925216500';

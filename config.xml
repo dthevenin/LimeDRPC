@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://itu.int/challenge/iptv"
+  id="com.vinisketch.limedrpc"
+  width="960" height="540"
+  viewmodes="fullscreen"
+  version="0.0.33">
+  <name>LimeDRPC</name>
+  <description xml:lang="en"></description>
+  <author>David Thevenin</author>
+  <author>ViniSketch</author>
+  <license></license>
+  <language>FR</language>
+  <icon src="" />
+  <content src="index.bml" type="application/x-lime" />
+  <tag></tag>
+</widget>

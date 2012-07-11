@@ -1,0 +1,133 @@
+var _app_loaded_ = false;
+
+function printlnConsole () {};
+function printConsole () {};
+function printlnDebug () {};
+function printDebug () {};
+
+function lime_drpc_initComponent ()
+{
+  var config, default_values;
+
+  this.apply ("Application", "initComponent");
+  
+  config = new Object ();
+  config.id = "hak_id_1316599541361207994";
+  this.background = Class["new"]("ABImageView", config);
+  this.add (this.background, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316599588793922432";
+  this.firstItemView = Class["new"]("ABNavImageView", config);
+  this.add (this.firstItemView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316599610058955361";
+  this.secondItemView = Class["new"]("ABNavImageView", config);
+  this.add (this.secondItemView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316599623941745212";
+  this.thirdItemView = Class["new"]("ABNavImageView", config);
+  this.add (this.thirdItemView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316599951689898781";
+  this.abImageView4 = Class["new"]("ABImageView", config);
+  this.add (this.abImageView4, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316599954467659820";
+  this.abImageView5 = Class["new"]("ABImageView", config);
+  this.add (this.abImageView5, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316638065708381657";
+  this.firstContentView = Class["new"]("ABImageView", config);
+  this.add (this.firstContentView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316638069349266596";
+  this.secondContentView = Class["new"]("ABImageView", config);
+  this.add (this.secondContentView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316638072758339625";
+  this.thirdContentView = Class["new"]("ABImageView", config);
+  this.add (this.thirdContentView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316600199460616002";
+  this.contentPortalView = Class["new"]("ABImageView", config);
+  this.add (this.contentPortalView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316638739700882567";
+  this.videoView = Class["new"]("ABVideo", config);
+  this.add (this.videoView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316685310954239559";
+  this.detailButton = Class["new"]("ABNavImageView", config);
+  this.add (this.detailButton, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_131668539404724377";
+  this.pointView = Class["new"]("ABTextLabel", config);
+  this.add (this.pointView, 'children');
+  
+  config = new Object ();
+  config.id = "hak_id_1316685697453871789";
+  this.loadingView = Class["new"]("ABImageView", config);
+  this.add (this.loadingView, 'children');
+  this.background.init ();
+  this.firstItemView.init ();
+  this.secondItemView.init ();
+  this.thirdItemView.init ();
+  this.abImageView4.init ();
+  this.abImageView5.init ();
+  this.firstContentView.init ();
+  this.secondContentView.init ();
+  this.thirdContentView.init ();
+  this.contentPortalView.init ();
+  this.videoView.init ();
+  this.detailButton.init ();
+  this.pointView.init ();
+  this.loadingView.init ();
+  default_values = new Object ();
+  default_values.src = "http://vod_1.cpc";
+  this.videoView.configure (default_values);
+  default_values = new Object ();
+  default_values.text = "100";
+  this.pointView.configure (default_values);
+}
+Class.addMethod ("LimeDRPC", "initComponent", lime_drpc_initComponent);
+
+
+function initApplication ()
+{
+  var obj = undefined;
+  var default_values = new Object ();
+
+  
+  config = new Object ();
+  config.id = "hak_id_1316597366173644345";
+  this._lime_drpc = Class["new"]("LimeDRPC", config);
+  this._lime_drpc.init ();
+  Page.sendStart ();
+  this._lime_drpc.setNavigationGraph (_lime_drpc_nav_graph);
+}
+
+
+var _lime_drpc_nav_graph = new Object ();
+_lime_drpc_nav_graph.hak_id_1316599588793922432 = new Object ();
+_lime_drpc_nav_graph.hak_id_1316599588793922432[2] = 'hak_id_1316599610058955361';
+_lime_drpc_nav_graph.hak_id_1316599610058955361 = new Object ();
+_lime_drpc_nav_graph.hak_id_1316599610058955361[1] = 'hak_id_1316599588793922432';
+_lime_drpc_nav_graph.hak_id_1316599610058955361[2] = 'hak_id_1316599623941745212';
+_lime_drpc_nav_graph.hak_id_1316599623941745212 = new Object ();
+_lime_drpc_nav_graph.hak_id_1316599623941745212[1] = 'hak_id_1316599610058955361';
+_lime_drpc_nav_graph.hak_id_1316599623941745212[4] = 'hak_id_1316685310954239559';
+_lime_drpc_nav_graph.hak_id_1316685310954239559 = new Object ();
+_lime_drpc_nav_graph.hak_id_1316685310954239559[3] = 'hak_id_1316599623941745212';
+
